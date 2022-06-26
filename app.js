@@ -34,7 +34,6 @@ app.use('/users', usersRouter);
 app.use('/conocido', conocidoRouter);
 
 
-
 app.post('/datos', function (req, res) {
   req.session.nombre = req.body.nombre;
   req.session.apellido = req.body.apellido;
@@ -43,6 +42,10 @@ app.post('/datos', function (req, res) {
     apellido: req.session.apellido,
   });
 });
+app.get('/salir', function(req, res){
+  req.session.destroy();
+  res.redirect('/');
+})
 
 
 
